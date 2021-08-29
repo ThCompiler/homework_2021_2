@@ -29,16 +29,11 @@ QUnit.module('Тестируем функцию euclid', function () {
 		assert.strictEqual(euclid(...[ ...temp, ...temp, ...temp, ...temp, ...temp ]), euclid(...temp));
 	});
 
-	QUnit.test('Функция должна правильно работать с передачей в аргументы undefined и null', function (assert) {
+	QUnit.test('Функция должна правильно работать с передачей в аргументы undefined', function (assert) {
 		assert.strictEqual(euclid(undefined, 1, 1), 1, 'euclid(undefined, 1, 1) === 1');
 		assert.strictEqual(euclid(1, undefined, 1), 1, 'euclid(1, undefined, 1) === 1');
-		
-		assert.strictEqual(euclid(null, 1, 1), 1, 'euclid(null, 1, 1) === 1');
-		assert.strictEqual(euclid(1, null, 1), 1, 'euclid(1, null, 1) === 1');
-		assert.strictEqual(euclid(1, 1, null), 1, 'euclid(1, 1, null) === 1');
-
+	
 		assert.strictEqual(euclid(undefined), undefined, 'euclid(undefined) === undefined');
-		assert.strictEqual(euclid(null), null, 'euclid(null) === null');
 	});
 
 	QUnit.test('Функция должна правильно работать с передачей в аргументы Infinity', function (assert) {
@@ -46,5 +41,18 @@ QUnit.module('Тестируем функцию euclid', function () {
 		assert.strictEqual(euclid(Infinity, 2, 4), 2);
 		assert.strictEqual(euclid(4, Infinity, 2), 2);
 		assert.strictEqual(euclid(Infinity, Infinity, 2), 2);
+	});
+});
+
+QUnit.module('Тестируем функцию euclid с некорректными входными данными', function () {	
+	QUnit.test('Функция должна возвращать undefiend если получает строку', function (assert) {
+		assert.strictEqual(euclid(6, '2'), undefined, 'euclid(6, \'2\') === undefined');
+		assert.strictEqual(euclid('2', 'fskjdfsfd', 'eqwrqwr'), undefined, 'euclid(\'2\', \'fskjdfsfd\', \'eqwrqwr\') === undefined');
+		assert.strictEqual(euclid(''), undefined, 'euclid(\'\') === undefined');
+	});
+
+	QUnit.test('Функция должна возвращать undefiend если получает null', function (assert) {
+		assert.strictEqual(euclid(null, 1, 1), undefined, 'euclid(null, 1, 1) === undefined');
+		assert.strictEqual(euclid(null), undefined, 'euclid(null) === undefined');
 	});
 });

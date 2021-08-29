@@ -1,11 +1,35 @@
 'use strict';
 
-const base_euclid = (first, second) => {
+/**
+ * baseEuclid is function, that compute greatest common divisor of
+ * two numbers
+ * @param {number} first is first number
+ * @param {number} second is second number
+ * @returns gcd of two numbers
+ */
+const baseEuclid = (first, second) => {
     while (second) {
         [first, second] = [second, first %= second];
     }
     return first;
 };
 
-const euclid = (first_number, ...other_numbers) => other_numbers.reduce(
-        (previous_value, current_value) => base_euclid(previous_value, current_value), first_number);
+/**
+ * euclid is function, that compute greatest common divisor of 
+ * passed numbers 
+ * @param  {...number} numbers is sequence of input numbers
+ * @returns gcd of input numbers
+ * 
+ * If there are passed not number value in arguments,
+ * function will return undefined as result
+ */
+const euclid = (...numbers) => {
+    if (numbers.reduce((previousVal, currentVal) => 
+                        (typeof currentVal != 'number' && 
+                        currentVal !== undefined) || previousVal, false)) {
+        return undefined;
+    }
+    
+    return numbers.reduce((previousVal, currentVal) =>
+                                        baseEuclid(previousVal, currentVal));
+}
