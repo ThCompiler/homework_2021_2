@@ -45,14 +45,15 @@ QUnit.module('Тестируем функцию euclid', function () {
 });
 
 QUnit.module('Тестируем функцию euclid с некорректными входными данными', function () {	
-	QUnit.test('Функция должна возвращать undefiend если получает строку', function (assert) {
-		assert.strictEqual(euclid(6, '2'), undefined, 'euclid(6, \'2\') === undefined');
-		assert.strictEqual(euclid('2', 'fskjdfsfd', 'eqwrqwr'), undefined, 'euclid(\'2\', \'fskjdfsfd\', \'eqwrqwr\') === undefined');
-		assert.strictEqual(euclid(''), undefined, 'euclid(\'\') === undefined');
+	QUnit.test('Функция должна возвращать null если получает строку', function (assert) {
+		assert.strictEqual(euclid(6, '2'), null, 'euclid(6, \'2\') === null');
+		assert.strictEqual(euclid('2', 'fskjdfsfd', 'eqwrqwr'), null,
+							'euclid(\'2\', \'fskjdfsfd\', \'eqwrqwr\') === null');
+		assert.strictEqual(euclid(''), null, 'euclid(\'\') === null');
 	});
 
-	QUnit.test('Функция должна возвращать undefiend если получает null', function (assert) {
-		assert.strictEqual(euclid(null, 1, 1), undefined, 'euclid(null, 1, 1) === undefined');
-		assert.strictEqual(euclid(null), undefined, 'euclid(null) === undefined');
+	QUnit.test('Функция должна возвращать null если получает null', function (assert) {
+		assert.strictEqual(euclid(null, 1, 1), null, 'euclid(null, 1, 1) === null');
+		assert.strictEqual(euclid(null), null, 'euclid(null) === null');
 	});
 });

@@ -21,13 +21,13 @@ const baseEuclid = (first, second) => {
  * @returns gcd of input numbers
  * 
  * If there are passed not number value in arguments,
- * function will return undefined as result
+ * function will return null as unknown result
  */
 const euclid = (...numbers) => {
     if (numbers.reduce((previousVal, currentVal) => 
                         (typeof currentVal != 'number' && 
                         currentVal !== undefined) || previousVal, false)) {
-        return undefined;
+        return null;
     }
     
     return numbers.reduce((previousVal, currentVal) =>
