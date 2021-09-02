@@ -25,11 +25,11 @@ const baseEuclid = (first, second) => {
  */
 const euclid = (...numbers) => {
     if (numbers.reduce((previousVal, currentVal) => 
-                        (typeof currentVal != 'number' && 
+                        (typeof currentVal !== 'number' && 
                         currentVal !== undefined) || previousVal, false)) {
         return null;
     }
     
     return numbers.reduce((previousVal, currentVal) =>
                                         baseEuclid(previousVal, currentVal));
-}
+};
